@@ -17,9 +17,28 @@
  * // and one correct number in the incorrect place (2)
  *
  */
-function checkGuess(guess, solution) {
+function checkGuess(guess, secret) {
   // TODO: complete this function
+  const secretLetters = secret.split('');
+  const guessedLetters = guess.split('');
+  if (secretLetters.length!=guessedLetters.length) {
+    return null;
+  }
+  let correctPosition = []
+  let wrongPosition = []
+  for (var i = 0; i < secretLetters.length; i++) {
+    if (secretLetters[i]==guessedLetters[i]) {
+      correctPosition.push(secretLetters[i]);
+    } else {
+      if (secretLetters.includes(guessedLetters[i])) {
+        wrongPosition.push(guessedLetters[i]);
+      }
+    }
+  }
+   return [correctPosition.length,"-",wrongPosition.length].join(""); 
   // first determine how many characters total the two strings have in common
+
+
   // This may help:
   // https://github.com/bonnie/udemy-ENZYME/blob/master/context-base/src/helpers/index.js
   //
@@ -32,6 +51,7 @@ function checkGuess(guess, solution) {
   // characters not in the right place"
   // for example, "2-1"
   //
+
 }
 
 // https://jsdoc.app
